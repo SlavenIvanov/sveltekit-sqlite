@@ -1,0 +1,15 @@
+service: server
+image: slavenbg/sveltekit-sqlite
+servers:
+  - 88.198.208.88
+registry:
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+volumes:
+  # Mounting volume dirOnHost:dirOnContainer
+  - sqlite_data:/app/database
+healthcheck:
+  cmd: true
+  path: /

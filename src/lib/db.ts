@@ -43,7 +43,7 @@ export async function dbTest() {
 
 	let newRecords = 0
 
-	await new Promise((res) => setTimeout(res, 100))
+	await new Promise((res) => setTimeout(res, 500))
 
 	while (Date.now() < startTime + TEST_TIME_MS) {
 		new Promise<void>((res) => {
