@@ -1,7 +1,10 @@
 import Database from 'better-sqlite3'
 import { randomString } from './util'
+import { stat } from 'fs/promises'
 
-export const db = new Database('./database/sqlite.db', {})
+export const DB_PATH = './database/sqlite.db'
+
+export const db = new Database(DB_PATH, {})
 
 db.pragma('journal_mode = WAL')
 
@@ -54,5 +57,7 @@ export async function dbTest() {
 
 	console.log(`Created ${newRecords} records that is ${rps}/s`)
 
-	return { newRecords, rps }
+	const dbSizeInMb = Math.round((await stat(DB_PATH)).size / 1024 / 1024)
+
+	return { dbSizeInMb, newRecords, rps }
 }
