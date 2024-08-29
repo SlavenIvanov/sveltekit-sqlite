@@ -3,6 +3,8 @@ WORKDIR /app
 COPY package*.json .
 RUN npm ci
 COPY . .
+# Create database folder. This is needed in the build step for some reason???
+RUN mkdir database
 RUN npm run build
 RUN npm prune --production
 

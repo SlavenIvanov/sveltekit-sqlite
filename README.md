@@ -1,38 +1,21 @@
-# create-svelte
+### Dockerfile
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+https://gist.github.com/AradAlvand/04b2cad14b00e5ffe8ec96a3afbb34fb
 
-## Creating a project
+1. Build image
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+```sh
+docker build -t sveltekit-sqlite .
 ```
 
-## Developing
+2. Run docker image
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```sh
+docker run --name sveltekit-sqlite -p 3000:3000 sveltekit-sqlite
 ```
 
-## Building
+3. Push docker image to registry
 
-To create a production version of your app:
-
-```bash
-npm run build
+```sh
+docker image push sveltekit-sqlite:latest
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
